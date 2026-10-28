@@ -36,7 +36,17 @@ typedef struct{
 
 int main(){
 
+    FILE *fp = fopen("dungeonRoomList_large.txt", "r");
+    
+    /* Stuff done in class, incorperate later or remove
+    char sep[] = ":";
 
+    char buffer[1024];
+    while(fgets(buffer, sizeof(buffer), fp)){
+        char *tp = strtok(buffer, sep);
+        printf("|%s|\n", tp);
+    }
+    */
 
 
 
