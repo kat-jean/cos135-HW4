@@ -66,10 +66,6 @@ int main(int argc, char *argv[]){
                 if (count >= capacity){
                     capacity *= 2;
                     Room *temp = realloc(rooms, capacity * sizeof(Room));
-
-                free(cleaned_value);
-                free(rooms);
-
                 rooms = temp;
                 }
             strncpy(rooms[count].name, cleaned_value, sizeof(rooms[count].name)-1);
@@ -79,29 +75,20 @@ int main(int argc, char *argv[]){
                 strncpy(rooms[count].code, cleaned_value, sizeof(rooms[count].code) - 1);
                 rooms[count].code[sizeof(rooms[count].code) - 1] = '\0';
             }
-            
+            else if (strcmp(key, "Room Description") == 0) {
+                strncpy(rooms[count].desc, cleaned_value, sizeof(rooms[count].desc) - 1);
+                rooms[count].desc[sizeof(rooms[count].desc) - 1] = '\0';
+                count++;
         }
-
-
-
-
-
-
-
-
+        free(cleaned_value);
     }
+    
+    fclose(fp);
 
-    /* Stuff done in class, incorperate later or remove
-    char sep[] = ":";
-
-    char buffer[1024];
-    while(fgets(buffer, sizeof(buffer), fp)){
-        char *tp = strtok(buffer, sep);
-        printf("|%s|\n", tp);
+    for (int i = 0; i < count; i++) {
+        printf("Room %s: %s\n", rooms[i].code, rooms[i].name);
     }
-    */
-
-
-
-
+    
+    free(rooms);
+    return 0;
 }
