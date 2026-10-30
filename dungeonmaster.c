@@ -43,7 +43,49 @@ int main(int argc, char *argv[]){
 
     Room *rooms = malloc(capacity * sizeof(Room));
     
-    
+    char sep[] = ":";
+    char buffer[1024];
+
+    // read the file line by line using strok...
+
+    while(fgets(buffer, sizeof(buffer), fp) != NULL){
+        if (buffer[0] == '\n'){
+            continue;
+        }
+
+        char buffer_copy[1024];
+        strcpy(buffer_copy, buffer);
+
+        char *key = strok(buffer_copy, sep);
+        char *value = strok(NULL, sep);
+
+        if (key != NULL && value != NULL){
+            char *cleaned_value = trim(value);
+
+            if (strcmp(key, "Room Name") == 0){
+                if (count >= capacity){
+                    capacity *= 2;
+                    Room *temp = realloc(rooms, capacity * sizeof(Room));
+
+                free(cleaned_value);
+                free(rooms);
+                fclose(fp);
+
+                rooms = temp;
+                }
+        
+            }
+
+        }
+
+
+
+
+
+
+
+
+    }
 
     /* Stuff done in class, incorperate later or remove
     char sep[] = ":";
