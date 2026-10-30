@@ -34,10 +34,17 @@ typedef struct{
 
 
 
-int main(){
+int main(int argc, char *argv[]){
 
-    FILE *fp = fopen("dungeonRoomList_large.txt", "r");
+    FILE *fp = fopen(argv[1], "r");
+        
+    int capacity = 5;
+    int count = 0;
+
+    Room *rooms = malloc(capacity * sizeof(Room));
     
+    
+
     /* Stuff done in class, incorperate later or remove
     char sep[] = ":";
 
