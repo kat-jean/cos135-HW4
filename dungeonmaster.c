@@ -75,7 +75,11 @@ int main(int argc, char *argv[]){
             strncpy(rooms[count].name, cleaned_value, sizeof(rooms[count].name)-1);
             rooms[count].name[sizeof(rooms[count].code) - 1] = '\0';
             }
-
+            else if (strcmp(key, "Room Code") == 0) {
+                strncpy(rooms[count].code, cleaned_value, sizeof(rooms[count].code) - 1);
+                rooms[count].code[sizeof(rooms[count].code) - 1] = '\0';
+            }
+            
         }
 
 
